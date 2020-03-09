@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     // in webpack there are 4 concepts
@@ -7,10 +8,19 @@ module.exports = {
     // 2. the output - where to save our bundle file
     output: {
         // we need to have an absolute path
-        path: path.resolve(__dirname, 'dist/js'),
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'js/bundle.js'
     },
-    mode: 'development'
+   devServer: {
+       // the final code we want to ship
+       contentBase: './dist'
+   },
     // 3. loaders
-    // 4. plugins
-};
+    // 4. plugins - allow us to do complex processing on input files
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './src/index.html'
+        })
+    ]
+}

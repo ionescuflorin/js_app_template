@@ -1,0 +1,23 @@
+{
+    // is a collection of code transform plug-ins, which are like the pieces of code that actually apply the actual transformations to our code
+    "presets": [
+        ["@babel/env", {
+            "useBuiltIns": "usage",
+            "corejs": "3",
+            "targets": {
+                "browsers": [
+                    "last 5 versions",
+                    "ie >= 8"
+                ]
+            }
+        }]
+    ]
+}
+// babel-core - contains core functionality
+// babel-preset-env - all modern features will be copiled to es5
+// babel-loader - needed fo webpack to load babel files
+
+/*
+FOR BABEL
+npm install --save-dev @babel/core @babel/preset-env babel-loader npm install --save core-js@3 regenerator-runtime
+*/

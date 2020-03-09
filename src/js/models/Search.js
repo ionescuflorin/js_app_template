@@ -13,7 +13,6 @@ export default class Search {
       );
       // store the data into the Search object in a property custom called result
       this.result = res.data.recipes;
-      console.log(this);
       // console.log(this.result);
     } catch (error) {
       alert(error);

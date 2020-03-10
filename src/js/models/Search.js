@@ -1,4 +1,5 @@
 import axios from "axios";
+// import { key, proxy } from '../config'
 
 export default class Search {
   // in constructor will write the properties we want that class to have
@@ -22,8 +23,6 @@ export default class Search {
 
 // FIRST EXAMPLE THAT WORKS
 // async function getResults(query) {
-//   const proxy = "https://cors-anywhere.herokuapp.com/";
-//   const key = "DASDAFGAGSAFASD";
 //   const res = await axios(
 //     `${proxy}http://food2fork.com/api/search?key=${key}&q=${query}`
 //   );

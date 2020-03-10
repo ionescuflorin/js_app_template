@@ -43,3 +43,14 @@ elements.searchForm.addEventListener("submit", e => {
   e.preventDefault();
   controlSearch();
 });
+
+// apply event delegation for parent div with '.closest()' method
+elements.searchResPages.addEventListener('click', e => {
+  // everywhere we click we receive the entire btn
+  const btn = e.target.closest('.btn-inline');
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    searchView.clearResults();
+    searchView.renderResults(state.search.result, goToPage)
+  }
+})

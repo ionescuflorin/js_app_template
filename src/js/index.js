@@ -4,6 +4,7 @@
 import Search from "./models/Search";
 import Recipe from "./models/Recipe";
 import List from "./models/List";
+import Likes from "./models/Likes";
 
 // -------------- VIEWS ----------------
 import * as searchView from "./views/searchView";
@@ -12,6 +13,7 @@ import * as listView from "./views/listView";
 
 // ------------- OTHER IMPORTS ---------
 import { elements, renderLoader, clearLoader } from "./views/base";
+import Likes from "./models/Likes";
 
 /** Global state of the app
  * - Search object
@@ -147,6 +149,42 @@ elements.shopping.addEventListener('click', e => {
 
 })
 
+
+
+/**
+ * LIKE CONTROLLER
+ */
+const controlLike = () => {
+  // if we dont have likes we create a brand new one
+  if(!state.likes) state.likes = new Likes();
+  const currentID = state.recipe.id
+
+  // user has NOT yet liked current recipe
+  if(!state.likes.isLiked(currentID)) {
+    // Add like to the state
+    const newLike = state.likes.addLike(
+      currentID, 
+      state.recipe.title,
+      state.recipe.author,
+      state.recipe.img
+    )
+    // Toggle the like button
+
+    // Add like to UI list
+    console.log(state.likes)
+
+  // user HAS yet liked current recipe
+  } else {
+    // Remove like from the state
+    state.likes.deleteLike(currentID)
+    // Toggle the like button
+
+    // Remove like from UI list
+    console.log(state.likes)
+  }
+}
+
+
 // Handling recipe button clicks using another form of event delegation
 elements.recipe.addEventListener('click', e => {
   // .btn-decrease * -> any child elements of btn decrease 
@@ -164,7 +202,11 @@ elements.recipe.addEventListener('click', e => {
       recipeView.updateServingsIngredients(state.recipe);
 
   } else if(e.target.matches('.recipe__btn--add', '.recipe__btn--add *')) {
+    // Add ingredients to shopping lists
     controlList()
+  } else if (e.target.matches('.recipe__love, .recipe__love *')) {
+    // Like controller
+    controlLike();
   }
 })
 

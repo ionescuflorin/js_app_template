@@ -3,6 +3,7 @@
 // -------------- MODELS ---------------
 import Search from "./models/Search";
 import Recipe from "./models/Recipe";
+import List from "./models/List";
 
 // -------------- VIEWS ----------------
 import * as searchView from "./views/searchView";
@@ -127,5 +128,6 @@ elements.recipe.addEventListener('click', e => {
       recipeView.updateServingsIngredients(state.recipe);
 
   }
-  console.log(state.recipe)
 })
+
+window.l = new List();

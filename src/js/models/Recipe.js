@@ -56,7 +56,7 @@ export default class Recipe {
       const arrIng = ingredient.split(' ');
       // find the index where the unit it is located
       // returns the index of the element in whtch place of an array it is true
-      const unitIndex = arrIng. findIndex(el2 => unitsShort.includes(el2));
+      const unitIndex = arrIng. findIndex(el2 => units.includes(el2));
 
       let objIng;
       // -1 -> couldn't find the index
